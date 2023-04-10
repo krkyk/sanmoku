@@ -32,3 +32,26 @@ body {
 .status {
   margin-bottom: 10px;
 }
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
+}
+
+.move-btn {
+  border: none;
+  border-radius: 5px;
+  background-color: #e9546b;
+  color: #fff;
+  padding: 4px 8px;
+  margin-bottom: 5px;
+}
+
+.move-btn:hover {
+  background-color: #028760;
+  color: #fff;
+}
