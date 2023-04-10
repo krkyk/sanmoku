@@ -10,6 +10,7 @@ export default function Game() {
    */
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
+  const [isAsc, setIsAsc] = useState(true);
   const currentSquares = history[currentMove];
 
   //履歴を遡ったら履歴自体を更新
@@ -25,6 +26,10 @@ export default function Game() {
     setDogIsNext(nextMove % 2 === 0);
   }
 
+  function toggleAsc() {
+    setIsAsc(!isAsc);
+  }
+
   const moves = history.map((square, index) => {
     let description;
     if (index > 0) {
@@ -32,10 +37,14 @@ export default function Game() {
     } else {
       description = "Go to game start";
     }
+
     return (
       // mapなどループ処理でレンダリングするときは特定のためのkeyが必要
       <li key={index}>
-        <button className="move-btn" onClick={() => jumpTo(index)}>
+        <button
+          className={currentMove === index ? "move-btn now-btn" : "move-btn"}
+          onClick={() => jumpTo(index)}
+        >
           {description}
         </button>
       </li>
@@ -52,7 +61,10 @@ export default function Game() {
         />
       </div>
       <div className="game-info">
-        <ol>{moves}</ol>
+        <button className="sort-btn" onClick={() => toggleAsc()}>
+          asc ⇔ desc
+        </button>
+        <ol>{isAsc ? moves : moves.reverse()}</ol>
       </div>
     </div>
   );

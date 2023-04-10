@@ -55,3 +55,21 @@ body {
   background-color: #028760;
   color: #fff;
 }
+
+.now-btn {
+  color: #ffec47;
+}
+
+.sort-btn {
+  margin-left: 40px;
+  background-color: #706caa;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 2px 8px;
+}
+
+.sort-btn:hover {
+  background-color: #028760;
+  color: #fff;
+}
