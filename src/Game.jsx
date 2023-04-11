@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Board from "./component/Board";
+import GameInfo from "./component/GameInfo";
 
 // default=メインの関数
 export default function Game() {
@@ -30,30 +31,6 @@ export default function Game() {
     setIsAsc(!isAsc);
   }
 
-  const moves = history.map((square, index) => {
-    let description;
-    if (currentMove === index) {
-      description = { btnFlg: false, message: "You are at move #" + index };
-    } else if (index > 0) {
-      description = { btnFlg: true, message: "Go to move #" + index };
-    } else {
-      description = { btnFlg: true, message: "Go to game start" };
-    }
-
-    return (
-      // mapなどループ処理でレンダリングするときは特定のためのkeyが必要
-      <li key={index}>
-        {description.btnFlg ? (
-          <button className="move-btn" onClick={() => jumpTo(index)}>
-            {description.message}
-          </button>
-        ) : (
-          <span className="move-msg">{description.message}</span>
-        )}
-      </li>
-    );
-  });
-
   return (
     <div className="game">
       <div className="game-board">
@@ -63,12 +40,13 @@ export default function Game() {
           onPlay={handlePlay}
         />
       </div>
-      <div className="game-info">
-        <button className="sort-btn" onClick={() => toggleAsc()}>
-          asc ⇔ desc
-        </button>
-        <ol>{isAsc ? moves : moves.reverse()}</ol>
-      </div>
+      <GameInfo
+        history={history}
+        currentMove={currentMove}
+        jumpTo={jumpTo}
+        isAsc={isAsc}
+        toggleAsc={toggleAsc}
+      />
     </div>
   );
 }
