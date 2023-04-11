@@ -56,8 +56,11 @@ body {
   color: #fff;
 }
 
-.now-btn {
-  color: #ffec47;
+.move-msg {
+  font-size: 90%;
+  font-weight: bold;
+  padding: 0 3px;
+  color: #f39800;
 }
 
 .sort-btn {
