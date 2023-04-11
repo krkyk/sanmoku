@@ -33,6 +33,27 @@ export default function Board({ dogIsNext, squares, onPlay }) {
   return (
     <React.Fragment>
       <div className="status">{status}</div>
+
+      {Array(3)
+        .fill(0)
+        .map((row, i) => {
+          return (
+            <div className="board-row" key={i}>
+              {Array(3)
+                .fill(0)
+                .map((col, i) => {
+                  return (
+                    <Square
+                      value={squares[i]}
+                      onSquareClick={() => handleClick(i)}
+                      highlightCells={setStatus?.line.includes(1)}
+                    />
+                  );
+                })}
+            </div>
+          );
+        })}
+
       <div className="board-row">
         <Square
           value={squares[0]}
