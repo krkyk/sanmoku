@@ -30,81 +30,35 @@ export default function Board({ dogIsNext, squares, onPlay }) {
     status = "Next player: " + (dogIsNext ? "🐶" : "🐱");
   }
 
+  const MAX_ROW = 3;
+  const MAX_COL = 3;
+  // 全てのマスを入れる配列
+  const squareBoard = [];
+  for (let row = 0; row < MAX_ROW; row++) {
+    // マス一列分の配列
+    const rowBoard = [];
+    for (let col = 0; col < MAX_COL; col++) {
+      const index = MAX_COL * row + col;
+      rowBoard.push(
+        <Square
+          value={squares[index]}
+          onSquareClick={() => handleClick(index)}
+          highlightCells={setStatus?.line.includes(index)}
+          key={col}
+        />
+      );
+    }
+    squareBoard.push(
+      <div className="board-row" key={row}>
+        {rowBoard}
+      </div>
+    );
+  }
+
   return (
     <React.Fragment>
       <div className="status">{status}</div>
-
-      {Array(3)
-        .fill(0)
-        .map((row, i) => {
-          return (
-            <div className="board-row" key={i}>
-              {Array(3)
-                .fill(0)
-                .map((col, i) => {
-                  return (
-                    <Square
-                      value={squares[i]}
-                      onSquareClick={() => handleClick(i)}
-                      highlightCells={setStatus?.line.includes(1)}
-                    />
-                  );
-                })}
-            </div>
-          );
-        })}
-
-      <div className="board-row">
-        <Square
-          value={squares[0]}
-          onSquareClick={() => handleClick(0)}
-          highlightCells={setStatus?.line.includes(0)}
-        />
-        <Square
-          value={squares[1]}
-          onSquareClick={() => handleClick(1)}
-          highlightCells={setStatus?.line.includes(1)}
-        />
-        <Square
-          value={squares[2]}
-          onSquareClick={() => handleClick(2)}
-          highlightCells={setStatus?.line.includes(2)}
-        />
-      </div>
-      <div className="board-row">
-        <Square
-          value={squares[3]}
-          onSquareClick={() => handleClick(3)}
-          highlightCells={setStatus?.line.includes(3)}
-        />
-        <Square
-          value={squares[4]}
-          onSquareClick={() => handleClick(4)}
-          highlightCells={setStatus?.line.includes(4)}
-        />
-        <Square
-          value={squares[5]}
-          onSquareClick={() => handleClick(5)}
-          highlightCells={setStatus?.line.includes(5)}
-        />
-      </div>
-      <div className="board-row">
-        <Square
-          value={squares[6]}
-          onSquareClick={() => handleClick(6)}
-          highlightCells={setStatus?.line.includes(6)}
-        />
-        <Square
-          value={squares[7]}
-          onSquareClick={() => handleClick(7)}
-          highlightCells={setStatus?.line.includes(7)}
-        />
-        <Square
-          value={squares[8]}
-          onSquareClick={() => handleClick(8)}
-          highlightCells={setStatus?.line.includes(8)}
-        />
-      </div>
+      {squareBoard}
     </React.Fragment>
   );
 }
