@@ -33,22 +33,22 @@ export default function Game() {
   const moves = history.map((square, index) => {
     let description;
     if (currentMove === index) {
-      description = null;
+      description = { btnFlg: false, message: "You are at move #" + index };
     } else if (index > 0) {
-      description = "Go to move #" + index;
+      description = { btnFlg: true, message: "Go to move #" + index };
     } else {
-      description = "Go to game start";
+      description = { btnFlg: true, message: "Go to game start" };
     }
 
     return (
       // mapなどループ処理でレンダリングするときは特定のためのkeyが必要
       <li key={index}>
-        {description ? (
+        {description.btnFlg ? (
           <button className="move-btn" onClick={() => jumpTo(index)}>
-            {description}
+            {description.message}
           </button>
         ) : (
-          <span className="move-msg">You are at move #{index}</span>
+          <span className="move-msg">{description.message}</span>
         )}
       </li>
     );

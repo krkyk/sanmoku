@@ -71,17 +71,17 @@ export default function Board({ dogIsNext, squares, onPlay }) {
         <Square
           value={squares[6]}
           onSquareClick={() => handleClick(6)}
-          highkightCells={setStatus?.line.includes(6)}
+          highlightCells={setStatus?.line.includes(6)}
         />
         <Square
           value={squares[7]}
           onSquareClick={() => handleClick(7)}
-          highkightCells={setStatus?.line.includes(7)}
+          highlightCells={setStatus?.line.includes(7)}
         />
         <Square
           value={squares[8]}
           onSquareClick={() => handleClick(8)}
-          highkightCells={setStatus?.line.includes(8)}
+          highlightCells={setStatus?.line.includes(8)}
         />
       </div>
     </React.Fragment>
