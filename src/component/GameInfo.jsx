@@ -1,3 +1,5 @@
+import "./GameInfo.css";
+
 export default function GameInfo({
   history,
   currentMove,
@@ -10,7 +12,10 @@ export default function GameInfo({
     if (currentMove === index) {
       description = { btnFlg: false, message: "You are at move #" + index };
     } else if (index > 0) {
-      description = { btnFlg: true, message: "Go to move #" + index };
+      description = {
+        btnFlg: true,
+        message: "Go to move #" + index
+      };
     } else {
       description = { btnFlg: true, message: "Go to game start" };
     }

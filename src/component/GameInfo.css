@@ -1,0 +1,38 @@
+.move-btn {
+  border: none;
+  border-radius: 5px;
+  background-color: #e9546b;
+  color: #fff;
+  padding: 4px 8px;
+  margin-bottom: 5px;
+}
+
+.move-btn:hover {
+  background-color: #028760;
+  color: #fff;
+}
+
+.move-msg {
+  font-size: 90%;
+  font-weight: bold;
+  padding: 0 3px;
+  color: #f39800;
+}
+
+.game-info {
+  margin-left: 20px;
+}
+
+.sort-btn {
+  margin-left: 40px;
+  background-color: #706caa;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 2px 8px;
+}
+
+.sort-btn:hover {
+  background-color: #028760;
+  color: #fff;
+}

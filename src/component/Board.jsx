@@ -1,5 +1,6 @@
 import React from "react";
 import Square from "./Square";
+import "./Board.css";
 
 export default function Board({ dogIsNext, squares, onPlay }) {
   // マスをクリックしたときの関数

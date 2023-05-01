@@ -1,3 +1,5 @@
+import "./Square.css";
+
 export default function Square({ value, onSquareClick, highlightCells }) {
   return (
     <button
